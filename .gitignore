@@ -1,0 +1,11 @@
+__pycache__
+.venv/
+node_modules/
+package-lock.json
+.env
+.pytest_cache
+database.db
+flask_session/
+.DS_Store
+.vscode/
+fine_tuned_ViT.pth
