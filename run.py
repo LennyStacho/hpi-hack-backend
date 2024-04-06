@@ -1,14 +1,15 @@
 from flask import Flask, request, jsonify
 import torch
 from PIL import Image
-from transformers import ViTForImageClassification, ViTImageProcessor
+from transformers import ViTForImageClassification, ViTFeatureExtractor
 import requests
 import base64
 from io import BytesIO
 
 app = Flask(__name__)
+torch.no_grad()
 
-processor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224')
+processor = ViTFeatureExtractor.from_pretrained('google/vit-base-patch16-224')
 model = ViTForImageClassification.from_pretrained(
     'google/vit-base-patch16-224',
     num_labels=7,
@@ -66,4 +67,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
